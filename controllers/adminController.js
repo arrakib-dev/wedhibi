@@ -10,7 +10,6 @@ exports.createNew = (req, res)=>{
     const profilePicture = req.body.profilePicture ? req.params.profilePicture : 'dummy pic';
     const role = 'admin'
     const encPassword = bcrypt.hashSync(password, 12);
-    const passwordOk = bcrypt.compareSync(password, encPassword)
 
     if(email.length !== 0 && password.length !== 0){
         const user = new User({
