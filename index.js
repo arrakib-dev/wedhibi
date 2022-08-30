@@ -11,13 +11,21 @@ const bodyParser = require('body-parser');
 // mongoose
 const mongoose = require('mongoose');
 
+
 /*
 * Local Imports
 * ---------------------------------------------------------------
 */
+
+//import database info
+const db = require('./helpers/getDatabase').db()
+
+
 //import routes
 //admin
 const adminRoutes = require('./ routes/admin')
+// user
+const userRoutes = require('./ routes/user')
 
 /*
 * App Initialization
@@ -45,6 +53,7 @@ app.use(bodyParser.json())
 */
 
 app.use('/admin', adminRoutes)
+app.use('/user', userRoutes)
 
 app.use((req,res,next)=>{
     console.log('server is up & running')
@@ -57,9 +66,8 @@ app.use((req,res,next)=>{
 * ----------------------------------------------------------------
 */
 
-mongoose.connect('mongodb+srv://arrakib:MyF1rstM0ngoDBU5er@node-app.iroyjx0.mongodb.net/?retryWrites=true&w=majority', {
-    dbName : 'wedhibi'
-})
+
+mongoose.connect(db.dbUrl, {dbName : db.dbName})
     .catch((error)=>{
         console.log(error)
     })

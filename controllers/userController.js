@@ -9,7 +9,7 @@ exports.createNew = (req, res)=>{
     const password = req.body.password
     const name = req.body.name ? req.body.name : ''
     const profilePicture = req.body.profilePicture ? req.params.profilePicture : 'dummy pic'
-    const role = 'admin'
+    const role = 'user'
     const encPassword = bcrypt.hashSync(password, 12)
 
     if(email.length !== 0 && password.length !== 0){
@@ -48,7 +48,7 @@ exports.login = async (req, res)=>{
     const email = req.body.email
     const password = req.body.password
 
-    const user = await User.findOne({ email: email, role : 'admin' }).exec();
+    const user = await User.findOne({ email: email, role : 'user' }).exec();
 
     if(user !== null){
         if(user._id.length !== 0){
@@ -67,7 +67,7 @@ exports.login = async (req, res)=>{
             res.status(400).json({message: 'user with this email does not exits'})
         }
     } else {
-        res.status(500).json({message: 'no admin exists with this email'})
+        res.status(500).json({message: 'could not retrieve user from database'})
     }
 
 
