@@ -2,7 +2,7 @@
 Project and Task Management web application. Similar to Asana
 
 # Database
-For database to work a *db.json* is required inthe roor directory. Smaple json: 
+For database to work a *db.json* is required in the root directory. sample json: 
 ```
 {
   "dbUrl": "your mongo db url",

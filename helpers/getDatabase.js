@@ -1,7 +1,5 @@
-
-const fs = require('fs')
-const path = require('path')
-exports.db = (cb)=> {
+const fs = require('fs'), path = require('path');
+exports.db = ()=> {
     const p = path.join(
         path.dirname(process.mainModule.filename),
         'db.json'

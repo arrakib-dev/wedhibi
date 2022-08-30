@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs')
 
-const User = require('../models/Users')
+const User = require('../models/Admin')
 
 // create new admin
 exports.createNew = (req, res)=>{

@@ -24,8 +24,7 @@ const db = require('./helpers/getDatabase').db()
 //import routes
 //admin
 const adminRoutes = require('./ routes/admin')
-// user
-const userRoutes = require('./ routes/user')
+
 
 /*
 * App Initialization
@@ -53,9 +52,9 @@ app.use(bodyParser.json())
 */
 
 app.use('/admin', adminRoutes)
-app.use('/user', userRoutes)
 
-app.use((req,res,next)=>{
+
+app.use((req,res)=>{
     console.log('server is up & running')
     res.send('<h1>SERVER is UP & RUNNING!! </h1>')
 })

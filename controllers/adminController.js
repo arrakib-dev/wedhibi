@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs')
 
-const User = require('../models/Users')
+const Admin = require('../models/Admin')
 
 // create new admin
 exports.createNew = (req, res)=>{
@@ -13,7 +13,7 @@ exports.createNew = (req, res)=>{
     const encPassword = bcrypt.hashSync(password, 12)
 
     if(email.length !== 0 && password.length !== 0){
-        const user = new User({
+        const user = new Admin({
             name: name,
             password: encPassword,
             email: email,
@@ -48,7 +48,7 @@ exports.login = async (req, res)=>{
     const email = req.body.email
     const password = req.body.password
 
-    const user = await User.findOne({ email: email, role : 'admin' }).exec();
+    const user = await Admin.findOne({ email: email, role : 'admin' }).exec();
 
     if(user !== null){
         if(user._id.length !== 0){
