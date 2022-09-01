@@ -6,6 +6,7 @@ const memberSchema = new Schema({
     companyId: { type: Schema.Types.ObjectId, ref: 'Story', required:true },
     email: { type: String, required: true, unique:true },
     password: { type: String, required: true },
+    profilePicture: String,
 })
 
 module.exports = mongoose.model('Member', memberSchema)

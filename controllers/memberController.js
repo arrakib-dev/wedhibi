@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const Member = require('../models/Member')
 
 
-// create new admin
+// create new member
 exports.createNew = async (req, res)=>{
     // console.log(req)
     const email = req.body.email
@@ -48,7 +48,7 @@ exports.createNew = async (req, res)=>{
 
 }
 
-// admin login
+// member login
 exports.login = async (req, res)=>{
     const email = req.body.email
     const password = req.body.password
@@ -78,7 +78,7 @@ exports.login = async (req, res)=>{
 
 }
 
-// admin login
+// delete member
 exports.delete = async (req, res)=>{
     const email = req.body.email
     const id = req.body.id
@@ -95,7 +95,7 @@ exports.delete = async (req, res)=>{
 
 }
 
-// admin login
+// change member password
 exports.changePassword = async (req, res)=>{
     const email = req.body.email
     const oldPassword = req.body.oldPassword
@@ -121,7 +121,7 @@ exports.changePassword = async (req, res)=>{
 
 }
 
-// admin login
+// change member info
 exports.changeInfo = async (req, res)=>{
     const id = req.body.id
     const password = req.body.password

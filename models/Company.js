@@ -6,6 +6,7 @@ const companySchema = new Schema({
     password: { type: String, required: true},
     name: { type: String, required: true},
     description: String,
+    logo: String
 })
 
 module.exports = mongoose.model('Company', companySchema)
