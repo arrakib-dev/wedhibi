@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const memberSchema = new Schema({
     name: { type: String, required: true },
-    companyId: { type: Schema.Types.ObjectId, ref: 'Company', required: true },
+    companyId: { type: Schema.Types.ObjectId, ref: 'Story', required:true },
     email: { type: String, required: true, unique:true },
     password: { type: String, required: true },
 })

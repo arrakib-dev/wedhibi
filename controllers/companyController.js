@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs')
 
-const User = require('../models/Admin')
+const Company = require('../models/Company')
 
 // create new admin
 exports.createNew = (req, res)=>{
@@ -8,20 +8,18 @@ exports.createNew = (req, res)=>{
     const email = req.body.email
     const password = req.body.password
     const name = req.body.name ? req.body.name : ''
-    const profilePicture = req.body.profilePicture ? req.params.profilePicture : 'dummy pic'
-    const role = 'user'
+    const description = req.body.description ? req.params.description : ''
     const encPassword = bcrypt.hashSync(password, 12)
 
     if(email.length !== 0 && password.length !== 0){
-        const user = new User({
+        const company = new Company({
             name: name,
             password: encPassword,
             email: email,
-            role: role,
-            profilePicture: profilePicture
+            description: description
         })
 
-        user.save()
+        company.save()
             .then(result => {
                 res.json({ userID : result._id })
             })
@@ -48,17 +46,17 @@ exports.login = async (req, res)=>{
     const email = req.body.email
     const password = req.body.password
 
-    const user = await User.findOne({ email: email, role : 'user' }).exec();
+    const company = await Company.findOne({ email: email, role : 'user' }).exec();
 
-    if(user !== null){
-        if(user._id.length !== 0){
-            const password_encrypt = user.password
+    if(company !== null){
+        if(company._id.length !== 0){
+            const password_encrypt = company.password
             if(bcrypt.compareSync(password, password_encrypt)){
                 res.json({
-                    _id: user._id,
-                    email: user.email,
-                    name: user.name,
-                    role: user.role
+                    _id: company._id,
+                    email: company.email,
+                    name: company.name,
+                    description: company.description
                 })
             } else {
                 res.status(400).json({message: 'incorrect password'})
