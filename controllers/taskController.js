@@ -1,5 +1,4 @@
 const Task = require('../models/Task')
-const Company = require("../models/Company");
 
 // create new task
 exports.create = (req, res)=>{
@@ -31,8 +30,8 @@ exports.read = async (req, res)=>{
     const id = req.body.id
 
     const task = await Task.findById( id )
-        .populate('companyId')
-        .populate('projectId')
+        .populate('company')
+        .populate('project')
         .populate('subTasks')
         .populate('comments')
         .lean()

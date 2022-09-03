@@ -27,6 +27,10 @@ const adminRoutes = require('./routes/admin')
 const companyRoutes = require('./routes/company')
 const memberRoutes = require('./routes/member')
 const taskRoutes = require('./routes/task')
+const subTaskRoutes = require('/routes/subtask')
+const commentRoutes = require('/routes/comment')
+
+
 /*
 * App Initialization
 * ---------------------------------------------------------------
@@ -56,6 +60,8 @@ app.use('/admin', adminRoutes)
 app.use('/company', companyRoutes)
 app.use('/member', memberRoutes)
 app.use('/task', taskRoutes)
+app.use('/subTask', subTaskRoutes)
+app.use('/comment', commentRoutes)
 
 
 app.use((req,res)=>{
