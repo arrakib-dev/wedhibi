@@ -23,12 +23,8 @@ const db = require('./helpers/getDatabase').db()
 
 //import routes
 //admin
-const adminRoutes = require('./routes/admin')
-const companyRoutes = require('./routes/company')
-const memberRoutes = require('./routes/member')
-const taskRoutes = require('./routes/task')
-const subTaskRoutes = require('/routes/subtask')
-const commentRoutes = require('/routes/comment')
+const userRoute = require('./routes/user')
+
 
 
 /*
@@ -50,18 +46,22 @@ const app = express();
 // json body parser
 app.use(bodyParser.json())
 
+app.use((req,res, next)=>{
+    res.set('Access-Control-Allow-Origin', '*')
+    res.set('Access-Control-Allow-Headers', 'Content-Type')
+    res.set('Access-Control-Allow-Methods', 'POST')
+
+    next()
+
+})
+
 
 /*
 * Routes
 * ----------------------------------------------------------------
 */
 
-app.use('/admin', adminRoutes)
-app.use('/company', companyRoutes)
-app.use('/member', memberRoutes)
-app.use('/task', taskRoutes)
-app.use('/subTask', subTaskRoutes)
-app.use('/comment', commentRoutes)
+app.use('/user', userRoute)
 
 
 app.use((req,res)=>{
@@ -85,7 +85,7 @@ mongoose.connect(db.dbUrl, {dbName : db.dbName})
 * Start server
 * ----------------------------------------------------------------
 */
-app.listen(3000)
+app.listen(8080)
 
 
 

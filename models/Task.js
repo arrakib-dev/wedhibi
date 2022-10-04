@@ -4,16 +4,17 @@ const Schema = mongoose.Schema;
 const taskSchema = new Schema({
     name: { type: String, required: true },
     description: String,
-    company: { type: Schema.Types.ObjectId, ref: 'Story', required:true },
+    workspace: { type: Schema.Types.ObjectId, ref: 'Workspace', required:true },
     project: { type: Schema.Types.ObjectId, ref: 'Project', required:true },
-    assignee: { type: Schema.Types.ObjectId, ref: 'Member'},
-    collaborators: [{ type: Schema.Types.ObjectId, ref: 'Member' }],
+    assignee: { type: Schema.Types.ObjectId, ref: 'User'},
+    collaborators: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    createdBy: { type: Schema.Types.ObjectId, ref: 'User'},
+    createdOn:Date,
     startDate: Date,
     finishDate: Date,
     completed: Boolean,
-    subTasks:[{ type: Schema.Types.ObjectId, ref: 'SubTask' }],
+    completedOn: Date,
     priority: String,
-    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
 })
 
 module.exports = mongoose.model('Task', taskSchema)

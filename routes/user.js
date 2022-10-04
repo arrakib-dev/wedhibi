@@ -5,13 +5,13 @@ const express = require('express');
 const router = express.Router();
 
 // load controllers
-const adminController = require('../controllers/adminController');
+const userController = require('../controllers/userController');
 
 //define routes
 // create new admin
-router.post('/createNew', adminController.createNew)
+router.post('/create',userController.create)
 // create new admin
-router.post('/login', adminController.login)
+router.post('/login',userController.login)
 
 
 // export routes

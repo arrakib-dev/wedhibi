@@ -4,15 +4,16 @@ const Schema = mongoose.Schema;
 const projectSchema = new Schema({
     name: { type: String, required: true },
     description: String,
-    companyId: { type: Schema.Types.ObjectId, ref: 'Story', required:true },
-    leader: { type: Schema.Types.ObjectId, ref: 'Member'},
-    collaborators: [{ type: Schema.Types.ObjectId, ref: 'Member' }],
+    workspace: { type: Schema.Types.ObjectId, ref: 'Workspace', required:true },
+    createdBy: { type: Schema.Types.ObjectId, ref: 'User'},
+    createdOn: Date,
+    leader: { type: Schema.Types.ObjectId, ref: 'User'},
+    collaborators: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     startDate: Date,
     finishDate: Date,
     completed: Boolean,
-    tasks: [{ type: Schema.Types.ObjectId, ref: 'Task' }],
-    priority: String,
-    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
+    completedOn:Date,
+
 })
 
 module.exports = mongoose.model('Project', projectSchema)
