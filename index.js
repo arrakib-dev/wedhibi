@@ -4,12 +4,15 @@
 * Package Imports
 * ---------------------------------------------------------------
 */
+// dotenv
+const dotenv = require('dotenv').config();
 // express.js
 const express = require('express');
 //body-parser
 const bodyParser = require('body-parser');
 // mongoose
 const mongoose = require('mongoose');
+
 
 
 /*
@@ -75,11 +78,13 @@ app.use((req,res)=>{
 * ----------------------------------------------------------------
 */
 
-
+mongoose.set('strictQuery', true);
 mongoose.connect(db.dbUrl, {dbName : db.dbName})
     .catch((error)=>{
         console.log(error)
     })
+
+    
 
 /*
 * Start server

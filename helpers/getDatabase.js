@@ -1,12 +1,10 @@
-const fs = require('fs'), path = require('path');
-exports.db = ()=> {
-    const p = path.join(
-        path.dirname(process.mainModule.filename),
-        'db.json'
-    );
-    const data = fs.readFileSync(p)
 
-    return JSON.parse(data)
+exports.db = ()=> {
+    const mdb = {
+        'dbName' : process.env.DB_NAME,
+        'dbUrl' : process.env.BD_URL
+    }
+    return mdb;
 
 }
 

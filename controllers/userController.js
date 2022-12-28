@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const key = require('../helpers/api/access-token')
+const key = require('../helpers/access-token')
 
 exports.create = (req, res) =>{
     // create new user
